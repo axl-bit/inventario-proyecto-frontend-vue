@@ -27,6 +27,48 @@ const routes = [
     meta: { requiresAuth: true, roles: ['ADMIN'] }
   },
   {
+    path: '/estados',
+    name: 'Estados',
+    component: () => import('../views/EstadosView.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/areas',
+    name: 'Areas',
+    component: () => import('../views/AreasView.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/tipos-equipo',
+    name: 'TiposEquipo',
+    component: () => import('../views/TiposEquipoView.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/accesorios',
+    name: 'Accesorios',
+    component: () => import('../views/AccesoriosView.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/empleados',
+    name: 'Empleados',
+    component: () => import('../views/EmpleadosView.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/equipos',
+    name: 'Equipos',
+    component: () => import('../views/EquiposView.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/historial',
+    name: 'Historial',
+    component: () => import('../views/HistorialView.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/',
     redirect: '/login'
   }
@@ -46,12 +88,6 @@ router.beforeEach((to, from, next) => {
     next('/login');
   } else if (to.meta.guest && isAuthenticated) {
     next('/dashboard');
-  } else if (to.meta.roles && user) {
-    if (!to.meta.roles.includes(user.role)) {
-      next('/dashboard');
-    } else {
-      next();
-    }
   } else {
     next();
   }

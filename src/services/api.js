@@ -3,6 +3,7 @@ import authService from './authService';
 
 const api = axios.create({
   baseURL: 'http://localhost:8080'
+  // baseURL: 'http://localhost:8081'
 });
 
 // Interceptor para agregar token JWT a todas las peticiones
